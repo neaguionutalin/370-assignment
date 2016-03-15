@@ -3,7 +3,9 @@
 
 int main(void) {
 
-    startprog();
-    philosopher(0);
-    return 0;
+  for (int i = 0; i < count; i++)
+      pthread_create (&philos[i], NULL, philosopher, (void *)i);
+  for (int i = 0; i < count; i++)
+      pthread_join (philos[i], NULL);
+  return 0;
 }
